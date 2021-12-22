@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Grids.Avalonia/App.axaml" value="Grids.Avalonia/Grids.Avalonia.csproj" />
+        <entry key="Grids.Avalonia/Views/AboutDialogue.axaml" value="Grids.Avalonia/Grids.Avalonia.csproj" />
+        <entry key="Grids.Avalonia/Views/CharacterList.axaml" value="Grids.Avalonia/Grids.Avalonia.csproj" />
+        <entry key="Grids.Avalonia/Views/MainWindow.axaml" value="Grids.Avalonia/Grids.Avalonia.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

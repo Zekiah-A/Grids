@@ -1,0 +1,37 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="220"
+             x:Class="Grids.Avalonia.Views.CharacterList"
+             CornerRadius="5">
+  <!-- May swith to separate window because easier and i can use acrylic-->
+  <Grid RowDefinitions="30, *">
+      <Grid Grid.Row="0" ColumnDefinitions="*, *" Margin="10">
+        <TextBlock Grid.Column="0" FontWeight="Medium" Text="Select a unicode charcter:"/>
+        <TextBox Grid.Column="1" Margin="5, 5, 0, 5"/>
+      </Grid>
+      <Grid Grid.Row="1" ShowGridLines="True" RowDefinitions="*, *, *" ColumnDefinitions="*, *, *, *, *, *">
+        <Button Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+        <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+        <Button Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+        <Button Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+        <Button Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+        <Button Grid.Row="0" Grid.Column="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+        
+        <Button Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+        <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+        <Button Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+        <Button Grid.Row="1" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+        <Button Grid.Row="1" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+        <Button Grid.Row="1" Grid.Column="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+        
+        <Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+        <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+        <Button Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+        <Button Grid.Row="2" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+        <Button Grid.Row="2" Grid.Column="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2.5"></Button>
+      </Grid>
+    </Grid>
+</UserControl>
