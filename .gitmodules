@@ -1,0 +1,3 @@
+[submodule "Grids.IrcClient"]
+	path = Grids.IrcClient
+	url = https://github.com/Zekiah-A/Grids.IrcClient.git
