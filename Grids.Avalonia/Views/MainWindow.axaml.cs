@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Avalonia;
 using Avalonia.Controls;
@@ -6,56 +5,56 @@ using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using Grids.Avalonia.ViewModels;
 
-namespace Grids.Avalonia.Views
+namespace Grids.Avalonia.Views;
+
+public class MainWindow : ReactiveWindow<MainWindowViewModel>
 {
-    public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
+    private readonly MainWindowViewModel dataContext = new();
+
+    public MainWindow()
     {
-        private ListBox headerListBox => this.FindControl<ListBox>("HeaderListBox");
-        private ListBox footerListBox => this.FindControl<ListBox>("FooterListBox");
-        private MainWindowViewModel dataContext = new MainWindowViewModel();
-        
-        public MainWindow()
-        {
-            InitializeComponent();
+        InitializeComponent();
 #if DEBUG
-            this.AttachDevTools();
+        this.AttachDevTools();
 #endif
 
-            dataContext.HeaderItems = new List<TextBlock>()
-            {
-                this.FindControl<TextBlock>("Server1"),
-                this.FindControl<TextBlock>("Server2"),
-                this.FindControl<TextBlock>("Server3"),
-                this.FindControl<TextBlock>("Server4")
-            };
-            
-            dataContext.FooterItems = new List<TextBlock>()
-            {
-                this.FindControl<TextBlock>("Settings")
-            };
-        }
-
-        private void InitializeComponent()
+        dataContext.HeaderItems = new List<TextBlock>
         {
-            AvaloniaXamlLoader.Load(this);
-        }
+            this.FindControl<TextBlock>("Server1"),
+            this.FindControl<TextBlock>("Server2"),
+            this.FindControl<TextBlock>("Server3"),
+            this.FindControl<TextBlock>("Server4")
+        };
 
-        private void HeaderListBoxSelectionChanged(object? sender, SelectionChangedEventArgs eventArgs)
+        dataContext.FooterItems = new List<TextBlock>
         {
-            if (headerListBox!.SelectedIndex == -1)
-                return;
+            this.FindControl<TextBlock>("Settings")
+        };
+    }
 
-            footerListBox!.SelectedIndex = -1;
-           dataContext!.CurrentItem = dataContext.HeaderItems[headerListBox.SelectedIndex];
-        }
+    private ListBox headerListBox => this.FindControl<ListBox>("HeaderListBox");
+    private ListBox footerListBox => this.FindControl<ListBox>("FooterListBox");
 
-        private void FooterListBoxSelectionChanged(object? sender, SelectionChangedEventArgs eventArgs)
-        {
-            if (footerListBox!.SelectedIndex == -1)
-                return;
+    private void InitializeComponent()
+    {
+        AvaloniaXamlLoader.Load(this);
+    }
 
-            headerListBox!.SelectedIndex = -1;
-            dataContext!.CurrentItem = dataContext.FooterItems[footerListBox.SelectedIndex];
-        }
+    private void HeaderListBoxSelectionChanged(object? sender, SelectionChangedEventArgs eventArgs)
+    {
+        if (headerListBox!.SelectedIndex == -1)
+            return;
+
+        footerListBox!.SelectedIndex = -1;
+        dataContext!.CurrentItem = dataContext.HeaderItems[headerListBox.SelectedIndex];
+    }
+
+    private void FooterListBoxSelectionChanged(object? sender, SelectionChangedEventArgs eventArgs)
+    {
+        if (footerListBox!.SelectedIndex == -1)
+            return;
+
+        headerListBox!.SelectedIndex = -1;
+        dataContext!.CurrentItem = dataContext.FooterItems[footerListBox.SelectedIndex];
     }
 }

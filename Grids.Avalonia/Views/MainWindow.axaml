@@ -10,107 +10,114 @@
         Title="Grids IRC Client"
         TransparencyLevelHint="AcrylicBlur"
         Background="Transparent">
-    
+
     <Window.Styles>
         <Style Selector="TextBlock.ServerList">
-            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontSize" Value="16" />
             <Setter Property="Margin" Value="5, 0, 0, 0" />
         </Style>
         <Style Selector="ListBox">
-            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Background" Value="Transparent" />
         </Style>
     </Window.Styles>
-    
+
     <Design.DataContext>
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Design.DataContext>
     <DockPanel>
         <Menu DockPanel.Dock="Top" Height="25">
             <MenuItem Header="_Grids IRC Client" CornerRadius="2">
-                <MenuItem Header="_Network List"/>
-                <Separator/>
-                <MenuItem Header="_Quit" Command="{Binding Exit}"/>
+                <MenuItem Header="_Network List" />
+                <Separator />
+                <MenuItem Header="_Quit" Command="{Binding Exit}" />
             </MenuItem>
             <MenuItem Header="_Server" CornerRadius="2">
-                <MenuItem Header="_Disconnect"/>
-                <MenuItem Header="_Reconnect"/>
-                <MenuItem Header="_Join a channel"/>
-                <MenuItem Header="_Channel List"/>
+                <MenuItem Header="_Disconnect" />
+                <MenuItem Header="_Reconnect" />
+                <MenuItem Header="_Join a channel" />
+                <MenuItem Header="_Channel List" />
             </MenuItem>
             <MenuItem Header="_Tools" CornerRadius="2">
-                <MenuItem Header="Search"/>
-                <MenuItem Header="Copy"/>
-                <MenuItem Header="Paste"/>
-                <MenuItem Header="Clear Text"/>
-                <Separator/>
-                <MenuItem Header="Send System Info"/>
+                <MenuItem Header="Search" />
+                <MenuItem Header="Copy" />
+                <MenuItem Header="Paste" />
+                <MenuItem Header="Clear Text" />
+                <Separator />
+                <MenuItem Header="Send System Info" />
                 <!-- TODO:<MenuItem Header="Character List" (could be a popup when you press alt in the chat box)/>-->
             </MenuItem>
             <MenuItem Header="_Profile" CornerRadius="2">
                 <MenuItem Header="_Status">
                     <MenuItem Header="_Online">
                         <MenuItem.Icon>
-                            <Image Source="../Assets/online.png"/>
+                            <Image Source="../Assets/online.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="_Away">
                         <MenuItem.Icon>
-                            <Image Source="../Assets/away.png"/>
+                            <Image Source="../Assets/away.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
-                <MenuItem Header="Block List"/>
-                <MenuItem Header="_Friends List"/>
-                <MenuItem Header="_Logout"/>
-                <MenuItem Header="_Edit profile (Settings)"/>
+                <MenuItem Header="Block List" />
+                <MenuItem Header="_Friends List" />
+                <MenuItem Header="_Logout" />
+                <MenuItem Header="_Edit profile (Settings)" />
             </MenuItem>
         </Menu>
         <SplitView IsPaneOpen="True" DisplayMode="Inline" OpenPaneLength="220">
             <SplitView.Pane>
                 <Grid RowDefinitions="45, Auto, Auto, *, Auto">
                     <Grid Grid.Row="0" Margin="5" ColumnDefinitions="Auto, *">
-                        <Image Grid.Column="0" Width="45" Height="45" HorizontalAlignment="Center" Source="../Assets/grids.png"/>
-                        <TextBlock Grid.Column="1" FontWeight="Medium" Text="Grids IRC Client" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Image Grid.Column="0" Width="45" Height="45" HorizontalAlignment="Center"
+                               Source="../Assets/grids.png" />
+                        <TextBlock Grid.Column="1" FontWeight="Medium" Text="Grids IRC Client"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Grid>
-                    
-                    <TextBlock Grid.Row="1" Margin="10, 10, 10, 0" FontWeight="Medium" Text="Servers:"/> <!--Big header, make elements below collapseable-->
+
+                    <TextBlock Grid.Row="1" Margin="10, 10, 10, 0" FontWeight="Medium" Text="Servers:" />
+                    <!--Big header, make elements below collapseable-->
                     <Grid Grid.Row="2" ColumnDefinitions="*, *">
-                        <Button Grid.Column="0" Margin="5, 0, 2.5, 0" HorizontalAlignment="Stretch" Height="40" Padding="10">
-                            <TextBlock TextWrapping="Wrap" Text="🖉 Edit"/>
+                        <Button Grid.Column="0" Margin="5, 0, 2.5, 0" HorizontalAlignment="Stretch" Height="40"
+                                Padding="10">
+                            <TextBlock TextWrapping="Wrap" Text="🖉 Edit" />
                         </Button>
-                        <Button Grid.Column="1" Margin="2.5, 0, 5, 0" HorizontalAlignment="Stretch" Height="40" Padding="10">
-                            <TextBlock TextWrapping="Wrap" Text="🔍 Search"/>
+                        <Button Grid.Column="1" Margin="2.5, 0, 5, 0" HorizontalAlignment="Stretch" Height="40"
+                                Padding="10">
+                            <TextBlock TextWrapping="Wrap" Text="🔍 Search" />
                         </Button>
                     </Grid>
-                    <ListBox x:Name="HeaderListBox" Margin="5" Grid.Row="3" SelectionChanged="HeaderListBoxSelectionChanged">
+                    <ListBox x:Name="HeaderListBox" Margin="5" Grid.Row="3"
+                             SelectionChanged="HeaderListBoxSelectionChanged">
                         <ListBox.Styles>
                             <Style Selector="ListBoxItem">
-                                <Setter Property="CornerRadius" Value="5"/>
+                                <Setter Property="CornerRadius" Value="5" />
                             </Style>
                         </ListBox.Styles>
-                        
+
                         <ListBox.Items>
-                            <TextBlock x:Name="Server1" Text="server1"/>
-                            <TextBlock x:Name="Server2" Text="server2"/>
-                            <TextBlock x:Name="Server3" Text="server3"/>
-                            <TextBlock x:Name="Server4" Text="server4"/>
+                            <TextBlock x:Name="Server1" Text="server1" />
+                            <TextBlock x:Name="Server2" Text="server2" />
+                            <TextBlock x:Name="Server3" Text="server3" />
+                            <TextBlock x:Name="Server4" Text="server4" />
                         </ListBox.Items>
                     </ListBox>
-                    <ListBox x:Name="FooterListBox" VerticalAlignment="Bottom" Margin="5" Grid.Row="4" SelectionChanged="FooterListBoxSelectionChanged">
+                    <ListBox x:Name="FooterListBox" VerticalAlignment="Bottom" Margin="5" Grid.Row="4"
+                             SelectionChanged="FooterListBoxSelectionChanged">
                         <ListBox.Styles>
                             <Style Selector="ListBoxItem">
-                                <Setter Property="CornerRadius" Value="5"/>
-                                <Setter Property="Background" Value="{DynamicResource SystemAccentColorLight2}"/>
+                                <Setter Property="CornerRadius" Value="5" />
+                                <Setter Property="Background" Value="{DynamicResource SystemAccentColorLight2}" />
                             </Style>
                         </ListBox.Styles>
                         <ListBox.Items>
-                            <TextBlock FontWeight="Medium" x:Name="Settings" Text="Settings"/>
+                            <TextBlock FontWeight="Medium" x:Name="Settings" Text="Settings" />
                         </ListBox.Items>
                     </ListBox>
-                    
+
                 </Grid>
             </SplitView.Pane>
-            
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -118,28 +125,31 @@
                     <ColumnDefinition MinWidth="0" MaxWidth="200" Width="150" />
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0" RowDefinitions="*, Auto">
-                    <TextBox Grid.Row="0" Margin="5, 5, 0, 0" TextWrapping="Wrap" IsReadOnly="True" Text="{Binding Chat}"/>
+                    <TextBox Grid.Row="0" Margin="5, 5, 0, 0" TextWrapping="Wrap" IsReadOnly="True"
+                             Text="{Binding Chat}" />
                     <Grid Grid.Row="1" ColumnDefinitions="*, Auto" Margin="5">
-                        <TextBox Grid.Column="0" MaxHeight="100" TextWrapping="Wrap" Watermark="Enter message.."/>
+                        <TextBox Grid.Column="0" MaxHeight="100" TextWrapping="Wrap" Watermark="Enter message.." />
                         <Button Grid.Column="1" Margin="5, 0, 0, 0" VerticalAlignment="Stretch">
-                            <TextBlock VerticalAlignment="Center" Text="Send"/> <!-- TODO: Make the end of send line up with the chatbox - (IT'S ANNOYING)-->
+                            <TextBlock VerticalAlignment="Center" Text="Send" />
+                            <!-- TODO: Make the end of send line up with the chatbox - (IT'S ANNOYING)-->
                         </Button>
                     </Grid>
                 </Grid>
-                <GridSplitter Grid.Column="1"/>
-                
+                <GridSplitter Grid.Column="1" />
+
                 <StackPanel Grid.Column="2"> <!-- Maybe change the top alignment. -->
-                    <TextBox TextWrapping="WrapWithOverflow" Watermark="Search..." Margin="0, 0, 10, 0"/> <!--Make this collapsable-->
-                    <TextBlock Grid.Column="2" Margin=" 0, 5, 5, 5" FontWeight="Medium" Text="Server List:"/>
-                    <ListBox Grid.Column="2" Margin="0, 5, 10, 0">
+                    <TextBox TextWrapping="WrapWithOverflow" Watermark="Search..." Margin="0, 0, 10, 0" />
+                    <!--Make this collapsable-->
+                    <TextBlock Margin=" 0, 5, 5, 5" FontWeight="Medium" Text="Server List:" />
+                    <ListBox Margin="0, 5, 10, 0">
                         <ListBox.Styles>
                             <Style Selector="ListBoxItem">
-                                <Setter Property="CornerRadius" Value="5"/>
-                                <Setter Property="Padding" Value="1"/>
+                                <Setter Property="CornerRadius" Value="5" />
+                                <Setter Property="Padding" Value="1" />
                             </Style>
                         </ListBox.Styles>
                         <ListBox.Items>
-                            <TextBlock Classes="ServerList" Text="Zekiah"/>
+                            <TextBlock Classes="ServerList" Text="Zekiah" />
                         </ListBox.Items>
                     </ListBox>
                 </StackPanel>

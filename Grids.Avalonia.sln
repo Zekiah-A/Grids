@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grids.Avalonia", "Grids.Avalonia\Grids.Avalonia.csproj", "{6045DE7E-9522-45D1-B440-490079FDBB73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IrcClient", "Grids.IrcClient\IrcClient\IrcClient.csproj", "{B01150DB-641E-4F3A-8D14-C094DEDED1E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,7 @@ Global
 		{6045DE7E-9522-45D1-B440-490079FDBB73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6045DE7E-9522-45D1-B440-490079FDBB73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6045DE7E-9522-45D1-B440-490079FDBB73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B01150DB-641E-4F3A-8D14-C094DEDED1E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B01150DB-641E-4F3A-8D14-C094DEDED1E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal
