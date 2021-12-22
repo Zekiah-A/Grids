@@ -9,7 +9,9 @@ namespace Grids.Avalonia.Views;
 
 public class MainWindow : ReactiveWindow<MainWindowViewModel>
 {
-    private readonly MainWindowViewModel dataContext = new();
+    private ListBox headerListBox => this.FindControl<ListBox>("HeaderListBox");
+    private ListBox footerListBox => this.FindControl<ListBox>("FooterListBox");
+    private MenuItem serverMenu => this.FindControl<MenuItem>("ServerMenu");
 
     public MainWindow()
     {
@@ -18,7 +20,7 @@ public class MainWindow : ReactiveWindow<MainWindowViewModel>
         this.AttachDevTools();
 #endif
 
-        dataContext.HeaderItems = new List<TextBlock>
+        MainWindowViewModel.HeaderItems = new List<TextBlock>
         {
             this.FindControl<TextBlock>("Server1"),
             this.FindControl<TextBlock>("Server2"),
@@ -26,14 +28,11 @@ public class MainWindow : ReactiveWindow<MainWindowViewModel>
             this.FindControl<TextBlock>("Server4")
         };
 
-        dataContext.FooterItems = new List<TextBlock>
+        MainWindowViewModel.FooterItems = new List<TextBlock>
         {
             this.FindControl<TextBlock>("Settings")
-        };
+        };       
     }
-
-    private ListBox headerListBox => this.FindControl<ListBox>("HeaderListBox");
-    private ListBox footerListBox => this.FindControl<ListBox>("FooterListBox");
 
     private void InitializeComponent()
     {
@@ -44,17 +43,19 @@ public class MainWindow : ReactiveWindow<MainWindowViewModel>
     {
         if (headerListBox!.SelectedIndex == -1)
             return;
+        serverMenu.IsEnabled = true;
 
         footerListBox!.SelectedIndex = -1;
-        dataContext!.CurrentItem = dataContext.HeaderItems[headerListBox.SelectedIndex];
+        MainWindowViewModel.CurrentItem = MainWindowViewModel.HeaderItems![headerListBox.SelectedIndex];
     }
 
     private void FooterListBoxSelectionChanged(object? sender, SelectionChangedEventArgs eventArgs)
     {
         if (footerListBox!.SelectedIndex == -1)
             return;
+        serverMenu.IsEnabled = false;
 
         headerListBox!.SelectedIndex = -1;
-        dataContext!.CurrentItem = dataContext.FooterItems[footerListBox.SelectedIndex];
+        MainWindowViewModel.CurrentItem = MainWindowViewModel.FooterItems![footerListBox.SelectedIndex];
     }
 }

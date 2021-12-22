@@ -1,20 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Grids.Avalonia.Models;
 using ReactiveUI;
 
 namespace Grids.Avalonia.ViewModels;
 
 public class MainWindowViewModel : ReactiveObject
 {
-    private TextBlock? currentItem;
-    public List<TextBlock>? FooterItems;
-    public List<TextBlock>? HeaderItems;
+    private static TextBlock? currentItem;
+    public static List<TextBlock>? FooterItems;
+    public static List<TextBlock>? HeaderItems;
+
     public string Chat => "Zekiah: Hello World!";
 
-    public TextBlock? CurrentItem
+    public static TextBlock? CurrentItem
     {
         get => currentItem;
         set
@@ -24,18 +27,14 @@ public class MainWindowViewModel : ReactiveObject
         }
     }
 
+    public ServerClient test_serverclient = new ServerClient();
 
-    public void Exit()
-    {
-        (Application.Current.ApplicationLifetime as IControlledApplicationLifetime)?.Shutdown(1);
-    }
+    public void Reconnect() =>
+        test_serverclient.Reconnect();
 
-    public void CurrentItemChanged()
-    {
-        Console.WriteLine(CurrentItem!.Name);
-    }
+    public void Disconnect() =>
+        test_serverclient.Disconnect();
 
-    public void ChatRecieved(EventArgs e, string username, string message)
-    {
-    }
+    public void Exit() => (Application.Current.ApplicationLifetime as IControlledApplicationLifetime)?.Shutdown(1);
+    public static void CurrentItemChanged() => Console.WriteLine(CurrentItem!.Name); //TODO: Switch page when current changed?
 }

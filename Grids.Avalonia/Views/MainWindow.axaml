@@ -31,9 +31,9 @@
                 <Separator />
                 <MenuItem Header="_Quit" Command="{Binding Exit}" />
             </MenuItem>
-            <MenuItem Header="_Server" CornerRadius="2">
-                <MenuItem Header="_Disconnect" />
-                <MenuItem Header="_Reconnect" />
+            <MenuItem x:Name="ServerMenu" IsEnabled="False" Header="_Server" CornerRadius="2">
+                <MenuItem Header="_Disconnect" Command="{Binding Disconnect}" />
+                <MenuItem Header="_Reconnect" Command="{Binding Reconnect}" />
                 <MenuItem Header="_Join a channel" />
                 <MenuItem Header="_Channel List" />
             </MenuItem>
@@ -138,7 +138,7 @@
                 <GridSplitter Grid.Column="1" />
 
                 <StackPanel Grid.Column="2"> <!-- Maybe change the top alignment. -->
-                    <TextBox TextWrapping="WrapWithOverflow" Watermark="Search..." Margin="0, 0, 10, 0" />
+                    <TextBox TextWrapping="Wrap" Watermark="Search..." Margin="0, 0, 10, 0" />
                     <!--Make this collapsable-->
                     <TextBlock Margin=" 0, 5, 5, 5" FontWeight="Medium" Text="Server List:" />
                     <ListBox Margin="0, 5, 10, 0">
