@@ -78,32 +78,26 @@
                     <TextBlock Grid.Row="1" Margin="10, 10, 10, 0" FontWeight="Medium" Text="Servers:" />
                     <!--Big header, make elements below collapseable-->
                     <Grid Grid.Row="2" ColumnDefinitions="*, *">
-                        <Button Grid.Column="0" Margin="5, 0, 2.5, 0" HorizontalAlignment="Stretch" Height="40"
-                                Padding="10">
-                            <TextBlock TextWrapping="Wrap" Text="🖉 Edit" />
+                        <Button x:Name="EditButton" Grid.Column="0" Margin="5, 0, 2.5, 0" HorizontalAlignment="Stretch" Height="40" Padding="10">
+                            <TextBlock TextWrapping="Wrap" Text="🖉 Edit"/>
                         </Button>
-                        <Button Grid.Column="1" Margin="2.5, 0, 5, 0" HorizontalAlignment="Stretch" Height="40"
-                                Padding="10">
+                        <Button Grid.Column="1" Margin="2.5, 0, 5, 0" HorizontalAlignment="Stretch" Height="40" Padding="10">
                             <TextBlock TextWrapping="Wrap" Text="🔍 Search" />
                         </Button>
                     </Grid>
-                    <ListBox x:Name="HeaderListBox" Margin="5" Grid.Row="3"
-                             SelectionChanged="HeaderListBoxSelectionChanged">
+                    <ListBox x:Name="HeaderListBox" Margin="5" Grid.Row="3" Items="{Binding ServerItems}"> <!-- SelectionChanged="HeaderListBoxSelectionChanged"> -->
                         <ListBox.Styles>
                             <Style Selector="ListBoxItem">
                                 <Setter Property="CornerRadius" Value="5" />
                             </Style>
                         </ListBox.Styles>
-
-                        <ListBox.Items>
-                            <TextBlock x:Name="Server1" Text="server1" />
-                            <TextBlock x:Name="Server2" Text="server2" />
-                            <TextBlock x:Name="Server3" Text="server3" />
-                            <TextBlock x:Name="Server4" Text="server4" />
-                        </ListBox.Items>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding }"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
                     </ListBox>
-                    <ListBox x:Name="FooterListBox" VerticalAlignment="Bottom" Margin="5" Grid.Row="4"
-                             SelectionChanged="FooterListBoxSelectionChanged">
+                    <ListBox x:Name="FooterListBox" VerticalAlignment="Bottom" Margin="5" Grid.Row="4"> <!-- SelectionChanged="FooterListBoxSelectionChanged"> -->
                         <ListBox.Styles>
                             <Style Selector="ListBoxItem">
                                 <Setter Property="CornerRadius" Value="5" />
@@ -114,7 +108,6 @@
                             <TextBlock FontWeight="Medium" x:Name="Settings" Text="Settings" />
                         </ListBox.Items>
                     </ListBox>
-
                 </Grid>
             </SplitView.Pane>
 
@@ -125,9 +118,8 @@
                     <ColumnDefinition MinWidth="0" MaxWidth="200" Width="150" />
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0" RowDefinitions="*, Auto">
-                    <TextBox Grid.Row="0" Margin="5, 5, 0, 0" TextWrapping="Wrap" IsReadOnly="True"
-                             Text="{Binding Chat}" />
-                    <Grid Grid.Row="1" ColumnDefinitions="*, Auto" Margin="5">
+                    <TextBox Grid.Row="0" Margin="5, 5, 0, 0" TextWrapping="Wrap" IsReadOnly="True" Text="{Binding Chat}" />
+                    <Grid Grid.Row="1" ColumnDefinitions="*, Auto" Margin="5, 5, 0, 5">
                         <TextBox Grid.Column="0" MaxHeight="100" TextWrapping="Wrap" Watermark="Enter message.." />
                         <Button Grid.Column="1" Margin="5, 0, 0, 0" VerticalAlignment="Stretch">
                             <TextBlock VerticalAlignment="Center" Text="Send" />
@@ -137,11 +129,11 @@
                 </Grid>
                 <GridSplitter Grid.Column="1" />
 
-                <StackPanel Grid.Column="2"> <!-- Maybe change the top alignment. -->
-                    <TextBox TextWrapping="Wrap" Watermark="Search..." Margin="0, 0, 10, 0" />
+                <Grid Grid.Column="2" RowDefinitions="Auto, Auto, *"> <!-- Maybe change the top alignment. -->
+                    <TextBox Grid.Row="0" TextWrapping="Wrap" Watermark="Search..." Margin="0, 5, 5, 0" />
                     <!--Make this collapsable-->
-                    <TextBlock Margin=" 0, 5, 5, 5" FontWeight="Medium" Text="Server List:" />
-                    <ListBox Margin="0, 5, 10, 0">
+                    <TextBlock Grid.Row="1" Margin=" 0, 5, 5, 5" FontWeight="Medium" Text="Server List:" />
+                    <ListBox Grid.Row="2" Margin="0, 5, 10, 0">
                         <ListBox.Styles>
                             <Style Selector="ListBoxItem">
                                 <Setter Property="CornerRadius" Value="5" />
@@ -152,7 +144,7 @@
                             <TextBlock Classes="ServerList" Text="Zekiah" />
                         </ListBox.Items>
                     </ListBox>
-                </StackPanel>
+                </Grid>
             </Grid>
         </SplitView>
     </DockPanel>

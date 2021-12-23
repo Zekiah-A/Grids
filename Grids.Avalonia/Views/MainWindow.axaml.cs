@@ -1,44 +1,33 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
+using Avalonia.Interactivity;
+using Avalonia.LogicalTree;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
+using Avalonia.VisualTree;
 using Grids.Avalonia.ViewModels;
 
 namespace Grids.Avalonia.Views;
 
 public class MainWindow : ReactiveWindow<MainWindowViewModel>
 {
-    private ListBox headerListBox => this.FindControl<ListBox>("HeaderListBox");
-    private ListBox footerListBox => this.FindControl<ListBox>("FooterListBox");
-    private MenuItem serverMenu => this.FindControl<MenuItem>("ServerMenu");
-
     public MainWindow()
     {
         InitializeComponent();
 #if DEBUG
         this.AttachDevTools();
 #endif
-
-        MainWindowViewModel.HeaderItems = new List<TextBlock>
-        {
-            this.FindControl<TextBlock>("Server1"),
-            this.FindControl<TextBlock>("Server2"),
-            this.FindControl<TextBlock>("Server3"),
-            this.FindControl<TextBlock>("Server4")
-        };
-
-        MainWindowViewModel.FooterItems = new List<TextBlock>
-        {
-            this.FindControl<TextBlock>("Settings")
-        };       
     }
 
     private void InitializeComponent()
     {
         AvaloniaXamlLoader.Load(this);
     }
-
+/*
     private void HeaderListBoxSelectionChanged(object? sender, SelectionChangedEventArgs eventArgs)
     {
         if (headerListBox!.SelectedIndex == -1)
@@ -58,4 +47,5 @@ public class MainWindow : ReactiveWindow<MainWindowViewModel>
         headerListBox!.SelectedIndex = -1;
         MainWindowViewModel.CurrentItem = MainWindowViewModel.FooterItems![footerListBox.SelectedIndex];
     }
+*/
 }
