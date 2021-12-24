@@ -55,5 +55,4 @@ public class MainWindowViewModel : ReactiveObject
     public void Reconnect() => test_serverclient.Reconnect();
     public void Disconnect() => test_serverclient.Disconnect();
     public void Exit() => (Application.Current.ApplicationLifetime as IControlledApplicationLifetime)?.Shutdown(1);
-    //public static void CurrentItemChanged() => Console.WriteLine(CurrentItem!.Name); //TODO: Switch page when current changed?
 }

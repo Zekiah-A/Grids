@@ -129,7 +129,7 @@
                 </Grid>
                 <GridSplitter Grid.Column="1" />
 
-                <Grid Grid.Column="2" RowDefinitions="Auto, Auto, *"> <!-- Maybe change the top alignment. -->
+                <Grid Grid.Column="2" RowDefinitions="Auto, Auto, *">
                     <TextBox Grid.Row="0" TextWrapping="Wrap" Watermark="Search..." Margin="0, 5, 5, 0" />
                     <!--Make this collapsable-->
                     <TextBlock Grid.Row="1" Margin=" 0, 5, 5, 5" FontWeight="Medium" Text="Server List:" />
@@ -141,7 +141,22 @@
                             </Style>
                         </ListBox.Styles>
                         <ListBox.Items>
-                            <TextBlock Classes="ServerList" Text="Zekiah" />
+                            <TextBlock Classes="ServerList" Text="Zekiah">
+                                <TextBlock.ContextMenu> <!--In production, make this a template ofc / Contextmenu vs contextflyout... -->
+                                    <ContextMenu>
+                                        <Grid ColumnDefinitions="Auto, *, Auto">
+                                            <Image Grid.Column="0" Source="../Assets/online.png" Height="40"></Image> <!-- User PFP, probably just an image with their initial in it - make one for each in the alphabet and then set via script-->
+                                            <TextBlock Grid.Column="2" Margin="10, 0, 0, 0" Text="Zekiah &#x0d;&#x0a;zekiah@ircchat.web" /> <!-- Name and maybe whois email -->
+                                        </Grid>
+                                        <Separator />
+                                        <TextBlock Text="Friend User" /> <!-- Maybe should use menuitem for icon instead? or something??-->
+                                        <TextBlock Text="Private Message User" />
+                                        <TextBlock Text="Block User" />
+                                        <Separator />
+                                        <TextBlock VerticalAlignment="Center" Margin="0, 0, 20, 0" FontWeight="Medium" Text="See Profile..." />
+                                    </ContextMenu>
+                                </TextBlock.ContextMenu>
+                            </TextBlock>
                         </ListBox.Items>
                     </ListBox>
                 </Grid>

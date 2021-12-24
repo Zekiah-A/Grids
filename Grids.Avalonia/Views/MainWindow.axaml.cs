@@ -10,6 +10,7 @@ using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using Avalonia.VisualTree;
 using Grids.Avalonia.ViewModels;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Grids.Avalonia.Views;
 
@@ -18,7 +19,7 @@ public class MainWindow : ReactiveWindow<MainWindowViewModel>
     private ListBox headerListBox => this.FindControl<ListBox>("HeaderListBox");
     private ListBox footerListBox => this.FindControl<ListBox>("FooterListBox");
     private MenuItem serverMenu => this.FindControl<MenuItem>("ServerMenu");
-        
+    
     public MainWindow()
     {
         InitializeComponent();
@@ -39,7 +40,6 @@ public class MainWindow : ReactiveWindow<MainWindowViewModel>
         serverMenu.IsEnabled = true;
 
         footerListBox!.SelectedIndex = -1;
-        //MainWindowViewModel.CurrentItem = MainWindowViewModel.HeaderItems![headerListBox.SelectedIndex];
     }
 
     private void FooterListBoxSelectionChanged(object? sender, SelectionChangedEventArgs eventArgs)
@@ -49,7 +49,6 @@ public class MainWindow : ReactiveWindow<MainWindowViewModel>
         serverMenu.IsEnabled = false;
 
         headerListBox!.SelectedIndex = -1;
-        //MainWindowViewModel.CurrentItem = MainWindowViewModel.FooterItems![footerListBox.SelectedIndex];
     }
 
 }
