@@ -85,7 +85,7 @@
                             <TextBlock TextWrapping="Wrap" Text="🔍 Search" />
                         </Button>
                     </Grid>
-                    <ListBox x:Name="HeaderListBox" Margin="5" Grid.Row="3" Items="{Binding ServerItems}"> <!-- SelectionChanged="HeaderListBoxSelectionChanged"> -->
+                    <ListBox x:Name="HeaderListBox" Margin="5" Grid.Row="3" Items="{Binding ServerItems}" SelectionChanged="HeaderListBoxSelectionChanged">
                         <ListBox.Styles>
                             <Style Selector="ListBoxItem">
                                 <Setter Property="CornerRadius" Value="5" />
@@ -97,7 +97,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <ListBox x:Name="FooterListBox" VerticalAlignment="Bottom" Margin="5" Grid.Row="4"> <!-- SelectionChanged="FooterListBoxSelectionChanged"> -->
+                    <ListBox x:Name="FooterListBox" VerticalAlignment="Bottom" Margin="5" Grid.Row="4" SelectionChanged="FooterListBoxSelectionChanged">
                         <ListBox.Styles>
                             <Style Selector="ListBoxItem">
                                 <Setter Property="CornerRadius" Value="5" />

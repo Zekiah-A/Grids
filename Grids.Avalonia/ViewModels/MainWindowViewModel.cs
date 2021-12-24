@@ -14,8 +14,8 @@ namespace Grids.Avalonia.ViewModels;
 public class MainWindowViewModel : ReactiveObject
 {
     //private static TextBlock? currentItem;
-    public static List<TextBlock>? FooterItems;
-    public static List<TextBlock>? HeaderItems;
+    //public static List<TextBlock>? FooterItems;
+    //public static List<TextBlock>? HeaderItems;
 
     public string Chat => "Zekiah: Hello World!";
     

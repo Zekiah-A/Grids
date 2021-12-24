@@ -1,4 +1,4 @@
-# GridsIRCClient
+# Grids IRC Client
  A modern C# IRC Client, imitating clients such as HexChat, written using the Avalonia UI framework.
 
 
