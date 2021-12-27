@@ -29,7 +29,7 @@ public class MainWindowViewModel : ViewModelBase
 
     public MainWindowViewModel()
     {
-        AddServer("irc.lucky.net", 7777, false); //should be a class that has the server UI, button and extras
+        AddServer("irc.lucky.net", 7777, false); //Should be a class that has the server UI, button and extras
         
         ShowProfileDialog = new Interaction<MainWindowViewModel, ProfileWindowViewModel?>();
 
