@@ -1,16 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.LogicalTree;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media;
 using Avalonia.ReactiveUI;
 using Avalonia.VisualTree;
+using Grids.Avalonia.Models;
 using Grids.Avalonia.ViewModels;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using ReactiveUI;
 
 namespace Grids.Avalonia.Views;
 
@@ -19,6 +23,7 @@ public class MainWindow : ReactiveWindow<MainWindowViewModel>
     private ListBox headerListBox => this.FindControl<ListBox>("HeaderListBox");
     private ListBox footerListBox => this.FindControl<ListBox>("FooterListBox");
     private MenuItem serverMenu => this.FindControl<MenuItem>("ServerMenu");
+    //private ProfileWindow profileDialog;
     
     public MainWindow()
     {
@@ -26,6 +31,7 @@ public class MainWindow : ReactiveWindow<MainWindowViewModel>
 #if DEBUG
         this.AttachDevTools();
 #endif
+        this.WhenActivated(d => d(ViewModel!.ShowProfileDialog.RegisterHandler(ShowProfileDialogAsync)));
     }
 
     private void InitializeComponent()
@@ -50,5 +56,23 @@ public class MainWindow : ReactiveWindow<MainWindowViewModel>
 
         headerListBox!.SelectedIndex = -1;
     }
+    
+    object profileContent = new Profile("../Assets/ProfileImages/z.png", "zekiahepic", "zekiahepic@irc.net", "00000000", "zekiahAmo", "73.02.134.5", "01/07/20201", "Operator", "#channel on server1");
+    
+    //public object ProfileContent
+    //{
+    //    get => profileContent;
+    //    set => this.RaiseAndSetIfChanged(ref profileContent, value);
+    //}
 
+
+    private async Task ShowProfileDialogAsync(InteractionContext<MainWindowViewModel, ProfileWindowViewModel?> interaction)
+    {
+        var profileDialog = new ProfileWindow();
+        profileDialog.Content = profileContent;
+        profileDialog.DataContext = interaction.Input;
+        
+        var result = await profileDialog.ShowDialog<ProfileWindowViewModel?>(this);
+        interaction.SetOutput(result);
+    }
 }

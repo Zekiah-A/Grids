@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Net.Mime;
+using System.Reactive.Linq;
+using System.Windows.Input;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -11,12 +13,8 @@ using ReactiveUI;
 
 namespace Grids.Avalonia.ViewModels;
 
-public class MainWindowViewModel : ReactiveObject
+public class MainWindowViewModel : ViewModelBase
 {
-    //private static TextBlock? currentItem;
-    //public static List<TextBlock>? FooterItems;
-    //public static List<TextBlock>? HeaderItems;
-
     public string Chat => "Zekiah: Hello World!";
     
     private ObservableCollection<string> serverItems = new ObservableCollection<string>();
@@ -27,28 +25,28 @@ public class MainWindowViewModel : ReactiveObject
         set => this.RaiseAndSetIfChanged(ref serverItems, value);
     }
 
-    //public static TextBlock? CurrentItem
-    //{
-    //    get => currentItem;
-    //    set
-    //    {
-    //        currentItem = value;
-    //        CurrentItemChanged();
-    //    }
-    //}
-
     public ServerClient test_serverclient = new ServerClient();
 
-    //TEST: Test to add server
     public MainWindowViewModel()
     {
         AddServer("irc.lucky.net", 7777, false); //should be a class that has the server UI, button and extras
+        
+        ShowProfileDialog = new Interaction<MainWindowViewModel, ProfileWindowViewModel?>();
+
+        ShowProfile = ReactiveCommand.CreateFromTask(async () =>
+        {
+            MainWindowViewModel main = new MainWindowViewModel();
+
+            ProfileWindowViewModel? result = await ShowProfileDialog.Handle(main);
+        });
     }
+
+    public ICommand ShowProfile { get; }
+
+    public Interaction<MainWindowViewModel, ProfileWindowViewModel?> ShowProfileDialog { get; }
 
     public void AddServer(string address, int port, bool enableSSL)
     {
-        //could also make a template for more complex stuff
-        //var newCollection = new ObservableCollection<TextBlock>();
         ServerItems.Add(address);
     }
 
